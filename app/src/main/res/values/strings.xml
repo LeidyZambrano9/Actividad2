@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Actividad2</string>
+    <string name="Nombre_app">Reproductor Premium</string>
+    <string name="Nombre_autor">Leidy Zambrano</string>
+    <string name="Bienvenida_home">Inicia una nueva aventura con Reproductor Premium y descubre una nueva forma de ver el mundo.</string>
+    <string name="TextoBoton_home">Comienza</string>
+    <string name="registrate_home">Registrate</string>
+    <string name="Descripcion_Login">La aventura está por iniciar, por favor inicia sesión.</string>
+    <string name="Ingresar_login">Ingresar</string>
+    <string name="Recupera_Login">Recupera tu contraseña</string>
+    <string name="Mensaje_Lgin">No tienes Cuenta?</string>
+    <string name="Registrate_Login">Registrate</string>
 </resources>

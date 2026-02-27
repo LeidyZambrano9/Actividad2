@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="background_primary">#E6E6E6</color>
+    <color name="Letra_Boton">#FFFFFF</color>
+    <color name="Color_app">#DD0D9F</color>
+    <color name="Letra_NomApp">#223962</color>
+    <color name="Color_Negro">#000000</color>
+
+
+
+
 </resources>
