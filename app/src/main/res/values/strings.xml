@@ -10,4 +10,15 @@
     <string name="Recupera_Login">Recupera tu contraseña</string>
     <string name="Mensaje_Lgin">No tienes Cuenta?</string>
     <string name="Registrate_Login">Registrate</string>
+    <string name="titulo_registro">Registro</string>
+    <string name="nombres">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="correo_electr_registro">Correo electrónico</string>
+    <string name="contraseña_registro">Contraseña</string>
+    <string name="repetircontraseña_registro">Repetir Contraseña</string>
+    <string name="mensaje_Registro">Acepto los</string>
+    <string name="terminosYcondiciones_registro">Términos y Condiciones</string>
+    <string name="registrarse_button">Registrarse</string>
+    <string name="menYaTienesCuenta_registro">¿Ya tienes cuenta?</string>
+    <string name="mensajeInicio_registro">Iniciar Sesión</string>
 </resources>

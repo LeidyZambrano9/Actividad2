@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Actividad2">
         <activity
+            android:name=".Activities.Registro"
+            android:exported="false" />
+        <activity
             android:name=".Activities.Login"
             android:exported="false" />
         <activity

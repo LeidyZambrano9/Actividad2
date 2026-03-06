@@ -1,190 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_primary"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp"
     tools:context=".Activities.Login">
 
-    <ImageView
-        android:id="@+id/Logo_login"
-        android:layout_width="203dp"
-        android:layout_height="190dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+    <!-- Cabecera: Logo y Nombre -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="90dp"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/Logo_login"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/logoaplicativo" />
+
+        <TextView
+            android:id="@+id/NombreApp_Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/arbutus"
+            android:text="@string/Nombre_app"
+            android:textColor="@color/Letra_NomApp"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/NombreApp_Login"
-        android:layout_width="170dp"
-        android:layout_height="68dp"
-        android:fontFamily="@font/arbutus"
-        android:text="@string/Nombre_app"
-        android:textColor="@color/Letra_NomApp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
-
-    <TextView
-        android:id="@+id/Descripcion_Login"
-        android:layout_width="280dp"
-        android:layout_height="49dp"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:gravity="center_horizontal"
-        android:text="@string/Descripcion_Login"
-        android:textColor="@color/Letra_NomApp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.618"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28" />
-
-    <ImageView
-        android:id="@+id/Iconos_Login"
-        android:layout_width="67dp"
-        android:layout_height="168dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        app:srcCompat="@drawable/iconosaplicativo" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputCorreo"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        app:boxBackgroundMode="outline"
-        app:boxBackgroundColor="@color/Letra_Boton"
-        app:boxStrokeColor="@color/Color_app"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="2dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/Descripcion_Login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputPassword"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:boxBackgroundMode="outline"
-        app:boxBackgroundColor="@color/Letra_Boton"
-        app:boxStrokeColor="@color/Color_app"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="2dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/inputCorreo"
-        app:layout_constraintStart_toStartOf="@id/inputCorreo"
-        app:layout_constraintEnd_toEndOf="@id/inputCorreo">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPassword"
+            android:id="@+id/Descripcion_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+            android:gravity="center"
+            android:text="@string/Descripcion_Login"
+            android:textColor="@color/Letra_NomApp"
+            android:textSize="20sp"
+            android:layout_marginBottom="40dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Campo Correo con Icono -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/iconoper"
+            app:tint="@color/Color_app" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxStrokeColor="@color/Color_app"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Campo Password con Icono -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/iconollave"
+            app:tint="@color/Color_app" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@android:color/white"
+            app:boxStrokeColor="@color/Color_app"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
 
     <Button
-        android:id="@+id/Ingresar_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/Color_app"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:text="@string/Ingresar_login"
-        android:textColor="@color/Letra_Boton"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+            android:id="@+id/Ingresar_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/Color_app"
+            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+            android:text="@string/Ingresar_login"
+            android:textColor="@color/Letra_Boton"
+            android:textSize="22sp"
+            android:layout_marginBottom="20dp" />
 
-    <TextView
-        android:id="@+id/Recupera_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:text="@string/Recupera_Login"
-        android:textColor="@color/Letra_NomApp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.806" />
+        <TextView
+            android:id="@+id/Recupera_Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+            android:text="@string/Recupera_Login"
+            android:textColor="@color/Letra_NomApp"
+            android:textSize="16sp"
+            android:layout_marginBottom="30dp" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="373dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="156dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputPassword"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/botongoogle" />
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/botongoogle"
+            android:layout_marginBottom="35dp" />
 
-    <TextView
-        android:id="@+id/Mensaje_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:text="@string/Mensaje_Lgin"
-        android:textColor="@color/Letra_NomApp"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/Registro_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:text="@string/Registrate_Login"
-        android:textColor="@color/Color_app"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Mensaje_Login"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/Mensaje_Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                android:text="@string/Mensaje_Lgin"
+                android:textColor="@color/Letra_NomApp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/Registro_Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                android:text="@string/Registrate_Login"
+                android:textColor="@color/Color_app"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+</LinearLayout>
