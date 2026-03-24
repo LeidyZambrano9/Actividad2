@@ -9,4 +9,14 @@
     <string name="terminosYcondiciones_registro">Términos y Condiciones</string>
     <string name="menYaTienesCuenta_registro">¿Ya tienes cuenta?</string>
     <string name="mensajeInicio_registro">Iniciar Sesión</string>
+    <string name="inicioL">Inicio</string>
+    <string name="buscarL">Buscar</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="informaci_n">Información</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
+    <string name="inicioM">Inicio</string>
+    <string name="buscarP">Buscar</string>
+    <string name="configuraci_nP">Configuración</string>
+    <string name="informaci_nP">Información</string>
 </resources>

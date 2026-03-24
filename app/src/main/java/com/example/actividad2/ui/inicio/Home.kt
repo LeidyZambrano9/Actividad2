@@ -1,11 +1,13 @@
-package com.example.actividad2.Activities
+package com.example.actividad2.ui.inicio
 
-import com.example.actividad2.R
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView // No olvides importar TextView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.actividad2.R
+import com.example.actividad2.ui.auth.Login
+import com.example.actividad2.ui.auth.Registro
 
 class Home : AppCompatActivity() {
 

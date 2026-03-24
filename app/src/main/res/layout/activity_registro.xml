@@ -9,7 +9,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".Activities.Registro">
+    tools:context=".ui.auth.Registro">
 
 
     <TextView
@@ -23,279 +23,297 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="20dp" />
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@null"
-            app:srcCompat="@drawable/iconoper"
-            app:tint="@color/Color_app" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputNombres"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="@android:color/white"
-            app:boxStrokeColor="@color/Color_app"
-            app:boxStrokeWidth="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:endIconMode="clear_text">
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editNombres"
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nombres"
-                android:inputType="textPersonName"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/iconoper"
+                    app:tint="@color/Color_app" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:boxStrokeColor="@color/Color_app"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editNombres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nombres"
+                        android:inputType="textPersonName"
+                        android:padding="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@null"
-            app:srcCompat="@drawable/iconoper"
-            app:tint="@color/Color_app" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputApellidos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="@android:color/white"
-            app:boxStrokeColor="@color/Color_app"
-            app:boxStrokeWidth="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:endIconMode="clear_text">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editApellidos"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/apellidos"
-                android:inputType="textPersonName"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/iconoper"
+                    app:tint="@color/Color_app" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputApellidos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:boxStrokeColor="@color/Color_app"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editApellidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/apellidos"
+                        android:inputType="textPersonName"
+                        android:padding="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@null"
-            app:srcCompat="@drawable/iconoper"
-            app:tint="@color/Color_app" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputCorreo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="@android:color/white"
-            app:boxStrokeColor="@color/Color_app"
-            app:boxStrokeWidth="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:endIconMode="clear_text">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editCorreo"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/correo_electr_registro"
-                android:inputType="textEmailAddress"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/iconoper"
+                    app:tint="@color/Color_app" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:boxStrokeColor="@color/Color_app"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCorreo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/correo_electr_registro"
+                        android:inputType="textEmailAddress"
+                        android:padding="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@null"
-            app:srcCompat="@drawable/iconollave"
-            app:tint="@color/Color_app" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="@android:color/white"
-            app:boxStrokeColor="@color/Color_app"
-            app:boxStrokeWidth="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/contraseña_registro"
-                android:inputType="textPassword"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/iconollave"
+                    app:tint="@color/Color_app" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:boxStrokeColor="@color/Color_app"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/contraseña_registro"
+                        android:inputType="textPassword"
+                        android:padding="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginBottom="25dp">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@null"
-            app:srcCompat="@drawable/iconollave"
-            app:tint="@color/Color_app" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputRepetirPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundMode="outline"
-            app:boxBackgroundColor="@android:color/white"
-            app:boxStrokeColor="@color/Color_app"
-            app:boxStrokeWidth="2dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editRepetirPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/repetircontraseña_registro"
-                android:inputType="textPassword"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="25dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/iconollave"
+                    app:tint="@color/Color_app" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputRepetirPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:boxStrokeColor="@color/Color_app"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editRepetirPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/repetircontraseña_registro"
+                        android:inputType="textPassword"
+                        android:padding="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="30dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="30dp">
 
-        <CheckBox
-            android:id="@+id/checkTerminos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp" />
+                <CheckBox
+                    android:id="@+id/checkTerminos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-            android:text="@string/mensaje_Registro"
-            android:textColor="@color/Letra_NomApp"
-            android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                    android:text="@string/mensaje_Registro"
+                    android:textColor="@color/Letra_NomApp"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textTerminos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-            android:text="@string/terminosYcondiciones_registro"
-            android:textColor="@color/Color_app"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/Color_app"
-        android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-        android:text="@string/registrarse_button"
-        android:textColor="@color/Letra_Boton"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="25dp" />
+                <TextView
+                    android:id="@+id/textTerminos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                    android:text="@string/terminosYcondiciones_registro"
+                    android:textColor="@color/Color_app"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/btnRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/Color_app"
+                android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                android:text="@string/registrarse_button"
+                android:textColor="@color/Letra_Boton"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="25dp" />
 
-        <TextView
-            android:id="@+id/textYaTienesCuenta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-            android:text="@string/menYaTienesCuenta_registro"
-            android:textColor="@color/Letra_NomApp"
-            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textIniciarSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
-            android:text="@string/mensajeInicio_registro"
-            android:textColor="@color/Color_app"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/textYaTienesCuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                    android:text="@string/menYaTienesCuenta_registro"
+                    android:textColor="@color/Letra_NomApp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textIniciarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+                    android:text="@string/mensajeInicio_registro"
+                    android:textColor="@color/Color_app"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

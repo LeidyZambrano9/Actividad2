@@ -12,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Actividad2">
         <activity
-            android:name=".Activities.Registro"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.Login"
+            android:name=".ui.auth.Login"
             android:exported="false" />
         <activity
-            android:name=".Activities.Home"
+            android:name=".ui.auth.Registro"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.inicio.Splash"
             android:exported="false" />
         <activity
-            android:name=".Activities.Splash"
+            android:name=".ui.inicio.Home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
