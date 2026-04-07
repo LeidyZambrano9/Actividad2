@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Actividad2</string>
+    <string name="app_name">Reproductor Premium</string>
     <string name="Nombre_app">Reproductor Premium</string>
     <string name="Nombre_autor">Leidy Zambrano</string>
     <string name="Bienvenida_home">Inicia una nueva aventura con Reproductor Premium y descubre una nueva forma de ver el mundo.</string>
@@ -37,4 +37,13 @@
     <string name="buscarP">Buscar</string>
     <string name="configuraci_nP">Configuración</string>
     <string name="informaci_nP">Información</string>
+    <string name="productos_destacados">Productos destacados</string>
+    <string name="agregar_al_carrito">Agregar al carrito</string>
+    <string name="imagen_del_producto">Imagen del producto</string>
+    <string name="Prueba_admin">Aquí irá toda la información sobre el administrador</string>
+    <string name="Prueba_carrito">Aquí irá toda la información sobre el carrito de compras</string>
+    <string name="Prueba_catalogo">Aquí irá toda la información sobre el catalogo de productos</string>
+    <string name="Prueba_favoritos">Aquí irá toda la información sobre los favoritos</string>
+    <string name="Prueba_perfil">Aquí irá toda la información sobre el perfil del usuario</string>
+    <string name="Prueba_info">Aquí irá toda la información sobre la información general</string>
 </resources>

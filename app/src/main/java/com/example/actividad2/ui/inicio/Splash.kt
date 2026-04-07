@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.actividad2.ui.inicio.Home
 import com.example.actividad2.R
 
 class Splash : AppCompatActivity() {

@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/Letra_NomApp"
-    android:padding="25dp"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp"
+    android:paddingBottom="25dp"
+    android:paddingTop="60dp"
     android:gravity="center"
     android:orientation="horizontal">
 

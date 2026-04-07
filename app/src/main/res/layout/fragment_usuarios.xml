@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.perfil.PerfilFragment">
+    tools:context=".ui.main.admin.UsuariosFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/Prueba_perfil" />
+        android:text="Aquí irá toda la información sobre los usuarios" />
 
 </FrameLayout>
