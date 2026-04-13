@@ -4,22 +4,58 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.actividad2.R
+import com.example.actividad2.SupabaseClient
+import io.github.jan.supabase.postgrest.from
+import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 
 class Registro : AppCompatActivity() {
+
+    private lateinit var etNombres: EditText
+    private lateinit var etApellidos: EditText
+    private lateinit var etCorreo: EditText
+    private lateinit var etContrasena: EditText
+    private lateinit var etReContrasena: EditText
+    private lateinit var checkTerminos: CheckBox
+    private lateinit var btnRegistro: Button
+    private lateinit var tvCuenta: TextView
+
+    private lateinit var textIniciarSesion: TextView
+    private lateinit var textTerminos: TextView
+
+
+    @Serializable
+    data class UsuarioData(
+        val nombres: String,
+        val apellidos: String,
+        val correo: String,
+        val contrasena: String
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        val btnRegistro = findViewById<Button>(R.id.btnRegistro)
-        val textIniciarSesion = findViewById<TextView>(R.id.textIniciarSesion)
-        val textTerminos = findViewById<TextView>(R.id.textTerminos)
-        val checkTerminos = findViewById<CheckBox>(R.id.checkTerminos)
+        etNombres = findViewById<EditText>(R.id.editNombres)
+        etApellidos = findViewById<EditText>(R.id.editApellidos)
+        etCorreo = findViewById<EditText>(R.id.editCorreo)
+        etContrasena = findViewById<EditText>(R.id.editPassword)
+        etReContrasena = findViewById<EditText>(R.id.editRepetirPassword)
+        checkTerminos = findViewById<CheckBox>(R.id.checkTerminos)
+        btnRegistro = findViewById<Button>(R.id.btnRegistro)
+        tvCuenta = findViewById<TextView>(R.id.textYaTienesCuenta)
+
+        textIniciarSesion = findViewById<TextView>(R.id.textIniciarSesion)
+        textTerminos = findViewById<TextView>(R.id.textTerminos)
+
 
         // Volver al Login
         textIniciarSesion.setOnClickListener {
@@ -31,14 +67,50 @@ class Registro : AppCompatActivity() {
             Toast.makeText(this, "Abrir términos y condiciones", Toast.LENGTH_SHORT).show()
         }
 
-        // Botón Registrar
+        //Escuchar el boton de registro
         btnRegistro.setOnClickListener {
-            if (checkTerminos.isChecked) {
-                // Aquí iría la lógica de registro
-                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                // Ir al Home o Login
-            } else {
+
+            val nombres = etNombres.text.toString().trim()
+            val apellidos = etApellidos.text.toString().trim()
+            val correo = etCorreo.text.toString().trim()
+            val contrasena = etContrasena.text.toString().trim()
+            val reContrasena = etReContrasena.text.toString().trim()
+
+            // Validaciones básicas
+            if (nombres.isEmpty() || apellidos.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (contrasena != reContrasena) {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (!checkTerminos.isChecked) {
                 Toast.makeText(this, "Debes aceptar los términos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val usuario = UsuarioData(
+                nombres = nombres,
+                apellidos = apellidos,
+                correo = correo,
+                contrasena = contrasena
+            )
+
+            // Insertar en Supabase
+            lifecycleScope.launch {
+                try {
+                    SupabaseClient.client
+                        .from("usuarios")
+                        .insert(usuario)
+
+                    Toast.makeText(this@Registro, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show()
+
+                } catch (e: Exception) {
+                    Toast.makeText(this@Registro, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
