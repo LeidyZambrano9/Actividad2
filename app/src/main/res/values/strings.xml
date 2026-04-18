@@ -46,4 +46,5 @@
     <string name="Prueba_favoritos">Aquí irá toda la información sobre los favoritos</string>
     <string name="Prueba_perfil">Aquí irá toda la información sobre el perfil del usuario</string>
     <string name="Prueba_info">Aquí irá toda la información sobre la información general</string>
+    <string name="ingresar_con_huella">Ingresar con huella</string>
 </resources>

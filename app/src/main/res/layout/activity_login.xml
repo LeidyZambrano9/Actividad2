@@ -38,8 +38,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-
-
     <TextView
             android:id="@+id/Descripcion_Login"
             android:layout_width="match_parent"
@@ -124,7 +122,6 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-
     <Button
             android:id="@+id/Ingresar_login"
             android:layout_width="match_parent"
@@ -155,6 +152,19 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/botongoogle"
             android:layout_marginBottom="35dp" />
+
+        <TextView
+            android:id="@+id/Ingresa_Huella"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
+            android:text="@string/ingresar_con_huella"
+            android:textColor="@color/Color_app"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
