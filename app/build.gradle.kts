@@ -56,4 +56,7 @@ dependencies {
     implementation(libs.credential.manager.play)
     implementation(libs.biometric)
 
+    implementation(libs.coil)
+    implementation(libs.supabase.storage)
+
 }

@@ -1,5 +1,6 @@
 package com.example.actividad2.ui.auth
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -27,13 +28,11 @@ import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.Google
+import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.providers.builtin.IDToken
-import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 
 class Login : AppCompatActivity() {
-
     private lateinit var etCorreo: EditText
     private lateinit var etContra: EditText
     private lateinit var btnLogin: Button
@@ -42,13 +41,6 @@ class Login : AppCompatActivity() {
     private lateinit var tvRecuperar: TextView
     private lateinit var tvHuellaDigital: TextView
 
-    @Serializable
-    data class UsuarioData(
-        val nombres: String,
-        val apellidos: String,
-        val correo: String,
-        val contrasena: String
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,14 +49,15 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // Inicializar vistas
-        etCorreo = findViewById(R.id.editCorreo)
-        etContra = findViewById(R.id.editPassword)
-        btnLogin = findViewById(R.id.Ingresar_login)
-        btnGoogle = findViewById(R.id.imageButton2)
-        tvRegistrate = findViewById(R.id.Registro_Login)
-        tvRecuperar = findViewById(R.id.Recupera_Login)
-        tvHuellaDigital = findViewById(R.id.Ingresa_Huella)
+        etCorreo = findViewById(R.id.etCorreo)
+        etContra = findViewById(R.id.et_contra)
+        btnLogin = findViewById(R.id.botonLogin)
+        btnGoogle = findViewById(R.id.ingresaConGoogle)
+        tvRegistrate = findViewById(R.id.registrateLogin)
+        tvRecuperar = findViewById(R.id.textoRecuperar)
+        tvHuellaDigital = findViewById(R.id.ingresarConHuella)
 
+        // Manejo del teclado y barras de sistema
         val rootView = findViewById<ViewGroup>(R.id.main)
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -74,31 +67,37 @@ class Login : AppCompatActivity() {
             insets
         }
 
+        // Lógica de visibilidad del botón de huella
+        // Si hay una huella activa guardada en las preferencias, mostramos el botón
         if (CredentialesManager.huellaActiva(this)) {
             tvHuellaDigital.visibility = View.VISIBLE
         } else {
             tvHuellaDigital.visibility = View.GONE
         }
 
+        // Listener del botón Ingresar
         btnLogin.setOnClickListener {
             iniciarsesion()
         }
 
+        // Ir a Registro
         tvRegistrate.setOnClickListener {
             startActivity(Intent(this, Registro::class.java))
         }
 
+        // Recuperar contraseña
         tvRecuperar.setOnClickListener {
             Toast.makeText(this, "Funcionalidad próximamente", Toast.LENGTH_SHORT).show()
         }
 
-        tvHuellaDigital.setOnClickListener {
-            mostrarDialogHuella()
-        }
-
-        // Configurar botón de Google
+        // Botón de Google
         btnGoogle.setOnClickListener {
             iniciarSesionConGoogle()
+        }
+
+        // Iniciar sesión con huella
+        tvHuellaDigital.setOnClickListener {
+            mostrarDialogHuella()
         }
     }
 
@@ -106,29 +105,36 @@ class Login : AppCompatActivity() {
         val correo = etCorreo.text.toString().trim()
         val contra = etContra.text.toString().trim()
 
+        // Validaciones locales
         if (correo.isEmpty() || contra.isEmpty()) {
             Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
+        if (contra.length < 6) {
+            Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Llamada a Supabase Auth
         lifecycleScope.launch {
             try {
-                val usuario = SupabaseClient.client.from("usuarios")
-                    .select {
-                        filter {
-                            eq("correo", correo)
-                            eq("contrasena", contra)
-                        }
-                    }.decodeSingleOrNull<UsuarioData>()
-
-                if (usuario != null) {
-                    CredentialesManager.guardarCredenciales(this@Login, correo, contra, true)
-                    irAPantallaPrincipal()
-                } else {
-                    Toast.makeText(this@Login, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                SupabaseClient.client.auth.signInWith(Email) {
+                    email = correo
+                    password = contra
                 }
+
+                // Al iniciar sesión con éxito por primera vez, activamos la huella para la próxima vez
+                CredentialesManager.guardarCredenciales(this@Login, correo, contra, true)
+
+                irAPantallaPrincipal()
             } catch (e: Exception) {
-                Toast.makeText(this@Login, "Error al iniciar sesión: ${e.message}", Toast.LENGTH_LONG).show()
+                val message = when {
+                    e.message?.contains("invalid login credentials", ignoreCase = true) == true ->
+                        "Correo o contraseña incorrectos"
+                    else -> "Error al iniciar sesión: ${e.message}"
+                }
+                Toast.makeText(this@Login, message, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -136,7 +142,7 @@ class Login : AppCompatActivity() {
     private fun iniciarSesionConGoogle() {
         lifecycleScope.launch {
             try {
-                // 1. Configurar la solicitud de Google con tu Client ID
+                // 1. Configurar la solicitud de Google
                 val googleIdOption = GetGoogleIdOption.Builder()
                     .setFilterByAuthorizedAccounts(false)
                     .setServerClientId("415075410923-es3rbeb4ll2cadcirqpi0rikj2q3r547.apps.googleusercontent.com")
@@ -147,19 +153,18 @@ class Login : AppCompatActivity() {
                     .addCredentialOption(googleIdOption)
                     .build()
 
-                // 2. Mostrar el selector de cuentas
+                // 2. Mostrar el selector de cuentas de google
                 val credentialManager = CredentialManager.create(this@Login)
                 val result = credentialManager.getCredential(this@Login, request)
 
-                // 3. Extraer el ID Token
+                // 3. Obtener el token de Google
                 val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(result.credential.data)
 
-                // 4. Autenticar en Supabase usando el token de Google
+                // 4. Enviar el token a Supabase
                 SupabaseClient.client.auth.signInWith(IDToken) {
                     idToken = googleIdTokenCredential.idToken
                     provider = Google
                 }
-                
                 irAPantallaPrincipal()
             } catch (e: Exception) {
                 Toast.makeText(this@Login, "Error Google: ${e.message}", Toast.LENGTH_LONG).show()
@@ -170,6 +175,13 @@ class Login : AppCompatActivity() {
     private fun mostrarDialogHuella() {
         val executor = ContextCompat.getMainExecutor(this)
         val biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+                if (errorCode != BiometricPrompt.ERROR_USER_CANCELED && errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                    Toast.makeText(this@Login, "Error biométrico: $errString", Toast.LENGTH_SHORT).show()
+                }
+            }
+
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
                 val correo = CredentialesManager.obtenerCorreo(this@Login)
@@ -178,30 +190,33 @@ class Login : AppCompatActivity() {
                 if (correo != null && contra != null) {
                     lifecycleScope.launch {
                         try {
-                            val usuario = SupabaseClient.client.from("usuarios")
-                                .select {
-                                    filter {
-                                        eq("correo", correo)
-                                        eq("contrasena", contra)
-                                    }
-                                }.decodeSingleOrNull<UsuarioData>()
-
-                            if (usuario != null) {
-                                irAPantallaPrincipal()
-                            } else {
-                                Toast.makeText(this@Login, "Credenciales guardadas ya no son válidas", Toast.LENGTH_SHORT).show()
+                            SupabaseClient.client.auth.signInWith(Email) {
+                                email = correo
+                                password = contra
                             }
+                            irAPantallaPrincipal()
                         } catch (e: Exception) {
-                            Toast.makeText(this@Login, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                            runOnUiThread {
+                                Toast.makeText(this@Login, "Error al iniciar sesión: ${e.message}", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
+                } else {
+                    Toast.makeText(this@Login, "Inicia sesión con tu email primero", Toast.LENGTH_SHORT).show()
+                    CredentialesManager.limpiarCredenciales(this@Login)
+                    tvHuellaDigital.visibility = View.GONE
                 }
+            }
+
+            override fun onAuthenticationFailed() {
+                super.onAuthenticationFailed()
+                Toast.makeText(this@Login, "Autenticación fallida", Toast.LENGTH_SHORT).show()
             }
         })
 
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Acceso con huella")
-            .setSubtitle("Usa tu huella para ingresar")
+            .setSubtitle("Usa tu huella dactilar para ingresar")
             .setNegativeButtonText("Cancelar")
             .build()
 

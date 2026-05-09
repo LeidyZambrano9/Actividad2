@@ -78,7 +78,7 @@
             app:boxCornerRadiusBottomEnd="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editCorreo"
+                android:id="@+id/etCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
@@ -115,7 +115,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editPassword"
+                android:id="@+id/et_contra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -123,7 +123,7 @@
     </LinearLayout>
 
     <Button
-            android:id="@+id/Ingresar_login"
+            android:id="@+id/botonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/Color_app"
@@ -134,7 +134,7 @@
             android:layout_marginBottom="20dp" />
 
         <TextView
-            android:id="@+id/Recupera_Login"
+            android:id="@+id/textoRecuperar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/tiro_devanagari_sanskrit_italic"
@@ -144,7 +144,7 @@
             android:layout_marginBottom="30dp" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/ingresaConGoogle"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:adjustViewBounds="true"
@@ -154,7 +154,7 @@
             android:layout_marginBottom="35dp" />
 
         <TextView
-            android:id="@+id/Ingresa_Huella"
+            android:id="@+id/ingresarConHuella"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -181,7 +181,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/Registro_Login"
+                android:id="@+id/registrateLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

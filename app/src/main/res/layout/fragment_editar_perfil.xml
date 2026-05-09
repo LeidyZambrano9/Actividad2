@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_editar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Letra_NomApp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editar_perfil_titulo"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/Color_app"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- Foto redonda con ícono de cámara -->
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="24dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="6dp">
+
+                    <ImageView
+                        android:id="@+id/iv_editar_foto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_launcher_round"
+                        android:contentDescription="@string/foto_de_perfil_t" />
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Ícono de cámara sobre la foto -->
+                <ImageView
+                    android:id="@+id/iv_camara_icon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="bottom|end"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:padding="6dp"
+                    android:contentDescription="@string/cambiar_foto_de_perfil" />
+
+            </FrameLayout>
+
+            <!-- Nombres -->
+            <EditText
+                android:id="@+id/et_editar_nombres"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/nombres"
+                android:textColor="@color/Color_Negro"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Apellidos -->
+            <EditText
+                android:id="@+id/et_editar_apellidos"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/apellidos"
+                android:textColor="@color/Color_Negro"
+                android:inputType="textPersonName"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Correo -->
+            <EditText
+                android:id="@+id/et_editar_correo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/correo"
+                android:textColor="@color/Color_Negro"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Nueva contraseña -->
+            <EditText
+                android:id="@+id/et_editar_contrasena"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/nueva_contrase_a"
+                android:textColor="@color/Color_Negro"
+                android:inputType="textPassword"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Repetir contraseña -->
+            <EditText
+                android:id="@+id/et_editar_recontrasena"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:background="@drawable/style_edit_text"
+                android:hint="@string/repetir_nueva_contrase_a"
+                android:textColor="@color/Color_Negro"
+                android:inputType="textPassword"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Botón guardar -->
+            <Button
+                android:id="@+id/btn_guardar_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/guardar_cambios"
+                android:textColor="@color/Letra_Boton"
+                android:backgroundTint="@color/Color_app"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/Letra_Boton" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
